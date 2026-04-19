@@ -1,0 +1,18 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: vaidmassas-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: vaidmassas
+      MYSQL_USER: vaidmassas_user
+      MYSQL_PASSWORD: vaidmassas123
+    ports:
+      - "3306:3306"
+    volumes:
+      - vaidmassas-data:/var/lib/mysql
+
+volumes:
+  vaidmassas-data:
