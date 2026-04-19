@@ -1,18 +1,16 @@
 services:
-
-  mysql:
-    image: mysql:8.0
+  postgres:
+    image: postgres:16
     container_name: vaidmassas-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: vaidmassas
-      MYSQL_USER: vaidmassas_user
-      MYSQL_PASSWORD: vaidmassas123
+      POSTGRES_DB: vaidmassas
+      POSTGRES_USER: vaidmassas_user
+      POSTGRES_PASSWORD: vaidmassas123
     ports:
-      - "3306:3306"
+      - "5432:5432"
     volumes:
-      - vaidmassas-data:/var/lib/mysql
+      - vaidmassas-data:/var/lib/postgresql/data
 
 volumes:
   vaidmassas-data:
