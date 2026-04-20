@@ -41,4 +41,22 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
             @Param("start") LocalDate start,
             @Param("end") LocalDate end
     );
+    @Query("""
+    SELECT s FROM Sale s
+    JOIN FETCH s.product
+    WHERE s.saleDate >= :start AND s.saleDate <= :end
+    ORDER BY s.saleDate DESC, s.id DESC
+""")
+    List<Sale> findDetailedByPeriod(
+            @Param("start") LocalDate start,
+            @Param("end") LocalDate end
+    );
+
+    @Query("""
+    SELECT s FROM Sale s
+    JOIN FETCH s.product
+    WHERE s.saleDate = :date
+    ORDER BY s.id DESC
+""")
+    List<Sale> findDetailedByDay(@Param("date") LocalDate date);
 }
