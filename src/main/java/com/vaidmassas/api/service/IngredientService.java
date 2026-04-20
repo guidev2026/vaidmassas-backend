@@ -30,7 +30,7 @@ public class IngredientService {
     }
 
     public IngredientResponse create(IngredientRequest request) {
-        if (repository.existsByNameIgnoreCase(request.getName())) {
+        if (repository.existsByNameIgnoreCaseAndActiveTrue(request.getName())) {
             throw new IllegalArgumentException("Já existe um ingrediente com esse nome");
         }
 

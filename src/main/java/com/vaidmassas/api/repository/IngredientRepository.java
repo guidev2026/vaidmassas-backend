@@ -11,5 +11,5 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
 
     List<Ingredient> findByActiveTrue();
 
-    boolean existsByNameIgnoreCase(String name);
+    boolean existsByNameIgnoreCaseAndActiveTrue(String name);
 }

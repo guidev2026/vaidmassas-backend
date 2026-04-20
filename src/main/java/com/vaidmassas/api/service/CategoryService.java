@@ -28,7 +28,7 @@ public class CategoryService {
     }
 
     public CategoryResponse create(CategoryRequest request) {
-        if (repository.existsByNameIgnoreCase(request.getName())) {
+        if (repository.existsByNameIgnoreCaseAndActiveTrue(request.getName())) {
             throw new IllegalArgumentException("Já existe uma categoria com esse nome");
         }
 
